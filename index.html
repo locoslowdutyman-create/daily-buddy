@@ -1,1 +1,33 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Buddy</title>
+<style>
+body{font-family:Arial;background:#111827;color:white;padding:20px;max-width:500px;margin:auto}
+h1{color:#facc15} .card{background:#1f2937;padding:15px;border-radius:12px;margin:12px 0}
+button{background:#facc15;border:0;padding:10px 15px;border-radius:8px;font-weight:bold}
+input{padding:10px;width:70%;border-radius:8px;border:0}
+li{margin:8px 0}
+</style>
+</head>
+<body>
+<h1>👋 Daily Buddy</h1>
+<p id="date"></p>
+<div class="card"><h3>How are you today?</h3>
+<button onclick="mood('😊 Great')">😊 Great</button>
+<button onclick="mood('😐 Okay')">😐 Okay</button>
+<button onclick="mood('😔 Tired')">😔 Tired</button>
+<p id="moodText"></p></div>
+<div class="card"><h3>✅ My Tasks</h3>
+<input id="task" placeholder="Type task...">
+<button onclick="addTask()">Add</button><ul id="list"></ul></div>
+<div class="card"><h3>💧 Water</h3><p id="water">0 glasses</p><button onclick="drink()">+ Drink Water</button></div>
+<script>
+document.getElementById('date').innerText=new Date().toDateString();
+let c=0; function drink(){c++;document.getElementById('water').innerText=c+' glasses'}
+function mood(m){document.getElementById('moodText').innerText='You feel: '+m}
+function addTask(){let v=document.getElementById('task').value; if(!v) return; let li=document.createElement('li'); li.innerText=v+' ❌'; li.onclick=()=>li.remove(); document.getElementById('list').appendChild(li); document.getElementById('task').value=''}
+</script>
+</body>
+</html>
